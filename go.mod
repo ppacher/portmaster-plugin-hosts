@@ -2,12 +2,10 @@ module github.com/ppacher/portmaster-plugin-hosts
 
 go 1.18
 
-replace github.com/safing/portmaster => ../../safing/portmaster
-
 require (
 	github.com/hashicorp/go-hclog v1.0.0
 	github.com/miekg/dns v1.1.50
-	github.com/safing/portmaster v0.9.5
+	github.com/safing/portmaster v0.9.6-0.20220906121621-41310b8d5c42
 	github.com/spf13/cobra v1.5.0
 	github.com/txn2/txeh v1.3.0
 )
