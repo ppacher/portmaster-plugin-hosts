@@ -25,13 +25,16 @@ func main() {
 		Run: func(_ *cobra.Command, args []string) {
 			var hostsResolver *resolver.HostsResolver
 
-			framework.RegisterResolver(
+            err := framework.RegisterResolver(
 				// we encapsulate the resolver in an additional function so we can
 				// create the resolver when the framework is actually initialized.
 				framework.ResolverFunc(func(ctx context.Context, d *proto.DNSQuestion, c *proto.Connection) (*proto.DNSResponse, error) {
 					return hostsResolver.Resolve(ctx, d, c)
 				}),
 			)
+            if err != nil {
+                panic(err)
+            }
 
 			framework.OnInit(func(ctx context.Context) error {
 				var cfg Config
